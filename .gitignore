@@ -1,0 +1,19 @@
+vendor/
+
+# eclipse
+.externalToolBuilders
+.settings
+.buildpath
+.project
+
+#Others
+.DS_Store
+bin/behat
+bin/doctrine*
+bin/phpspec
+bin/webunit
+bin/phpunit
+bin/phpcrodm
+bin/phpcrodm.php
+bin/jackalope
+bin/phpunit

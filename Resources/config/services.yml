@@ -1,0 +1,3 @@
+services:   
+    odiseo_core.factory.filter:
+        class: Odiseo\Bundle\CoreBundle\Filters\FilterFactory
