@@ -22,7 +22,7 @@ class  WhereQueryBuilder
 		{
 			$qb->where($filters[0]->getExpression());
 		
-			for ($i = 1; $i < count($filters) ; $i++)
+			for ($i = 1; $i < count($filters); $i++)
 			{
 				$qb->andWhere($filters[$i]->getExpression());
 			}
