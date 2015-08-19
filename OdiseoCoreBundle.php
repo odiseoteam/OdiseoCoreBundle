@@ -16,7 +16,7 @@ class OdiseoCoreBundle extends AbstractResourceBundle
             SyliusResourceBundle::DRIVER_DOCTRINE_ORM,
         );
     }
-    
+
     /*protected function getModelNamespace()
     {
         return 'Odiseo\Bundle\CoreBundle\Model';

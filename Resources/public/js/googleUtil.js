@@ -11,17 +11,18 @@ var GOOGLE_MAP = (function(){
     
     // Create the autocomplete object, restricting the search
     // to geographical location types.
-    autocomplete = new google.maps.places.Autocomplete(
-     (document.getElementById('odiseo_product_address')),
-        { types: ['address'],
-          componentRestrictions: {country: "pr"}});
+    autocomplete = new google.maps.places.Autocomplete(document.getElementById('odiseo_product_address'), {
+        types: ['address'],
+        componentRestrictions: {country: "pr"}
+    });
+
     // When the user selects an address from the dropdown,
     // populate the address fields in the form.
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-      _localizarAddress(autocomplete.getPlace());
-
+    google.maps.event.addListener(autocomplete, 'place_changed', function()
+    {
+        _localizarAddress(autocomplete.getPlace());
     });
-    map = new google.maps.Map(document.getElementById('map_container'),   mapOptions);
+    map = new google.maps.Map(document.getElementById('map_container'), mapOptions);
     
     $('#odiseo_product_town').change( function(){
     	  var optionSelected = $(this).find("option:selected");

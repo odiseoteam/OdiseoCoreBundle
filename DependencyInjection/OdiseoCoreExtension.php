@@ -1,6 +1,6 @@
 <?php
 
-namespace Odiseo\Bundle\EcommerceBundle\DependencyInjection;
+namespace Odiseo\Bundle\CoreBundle\DependencyInjection;
 
 use Sylius\Bundle\ResourceBundle\DependencyInjection\AbstractResourceExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,6 +15,10 @@ class OdiseoCoreExtension extends AbstractResourceExtension
 {
     protected $applicationName = 'odiseo_core';
     protected $configFormat = self::CONFIG_YAML;
+    protected $configFiles  = array(
+        'services',
+        'forms'
+    );
 
     public function load(array $config, ContainerBuilder $container)
     {

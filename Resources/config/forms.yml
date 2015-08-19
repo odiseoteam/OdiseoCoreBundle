@@ -1,0 +1,6 @@
+services:
+    odiseo_core.form.type.entity_hidden:
+        class: Odiseo\Bundle\CoreBundle\Form\Type\EntityHiddenType
+        arguments: ["@doctrine.orm.entity_manager"]
+        tags:
+            - { name: form.type, alias: odiseo_core_entity_hidden }
