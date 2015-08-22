@@ -53,12 +53,12 @@ abstract class BaseDbService implements BaseDbServiceInterface
 	
 	public function  findOneByKeyValue($key, $value)
     {
-		return $this->getMainRepository()->findOneBy( array($key => $value));
+		return $this->getMainRepository()->findOneBy(array($key => $value));
 	}
 	
 	public function  findOneByKeysValues($array)
     {
-		return $this->getMainRepository()->findOneBy( $array);
+		return $this->getMainRepository()->findOneBy($array);
 	}
 	
 	public function findAll()
