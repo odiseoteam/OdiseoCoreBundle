@@ -20,7 +20,7 @@ class  WhereQueryBuilder
 		
 		if($withFilters)
 		{
-			$qb->where($filters[0]->getExpression());
+            $qb->where($filters[0]->getExpression());
 		
 			for ($i = 1; $i < count($filters); $i++)
 			{
