@@ -13,7 +13,7 @@ var GOOGLE_MAP = (function()
         // to geographical location types.
         autocomplete = new google.maps.places.Autocomplete(document.getElementById('odiseo_product_address'), {
             types: ['address'],
-            componentRestrictions: {country: "pr"}
+            //componentRestrictions: {country: "pr"}
         });
 
         // When the user selects an address from the dropdown,
@@ -23,13 +23,6 @@ var GOOGLE_MAP = (function()
             _localizarAddress(autocomplete.getPlace());
         });
         map = new google.maps.Map(document.getElementById('map_container'), mapOptions);
-    
-        $('#odiseo_product_town').change( function()
-        {
-            var optionSelected = $(this).find("option:selected");
-            var townSelected   = optionSelected.text();
-            var matchedTown =  _matchCity(townSelected);
-        });
     };
 
     var _refreshMap = function()
@@ -38,7 +31,7 @@ var GOOGLE_MAP = (function()
         google.maps.event.trigger(map, 'resize');
     };
 
-
+    //restringe las predicciones del autocomplete a una zona determinada.
     var _matchCity = function(townSelected)
     {
 	    var service = new google.maps.places.AutocompleteService();
@@ -63,8 +56,11 @@ var GOOGLE_MAP = (function()
     {
 	    //Esto que sigue genera acoplamiento. Separar en móulos, lanzar eventos.
 	    $('#odiseo_product_address').attr('value', place.name );
-	    $('#odiseo_product_town').attr('value', place.vicinity);
-	    $('#odiseo_product_latitud').attr('value', place.geometry.location.lat() );
+	    $('#odiseo_product_town_name').attr('value', place.vicinity);
+        country = _retrieveCountry(place);
+        $('#odiseo_product_town_region_name').attr('value', country);
+
+        $('#odiseo_product_latitud').attr('value', place.geometry.location.lat() );
 	    $('#odiseo_product_longitud').attr('value',  place.geometry.location.lng());
 	  
 	   var location = place.geometry.location
@@ -77,6 +73,21 @@ var GOOGLE_MAP = (function()
             map: map,
             position: location
         });
+    };
+
+    var _retrieveCountry = function(place)
+    {
+       var country = '';
+       $.each(place.address_components , function( index, component){
+            $.each(component.types , function( index, value){
+                if ( value == 'country')
+                {
+                    country =   component.long_name;
+                }
+
+            });
+        });
+        return country;
     };
 
     google.maps.event.addDomListener(window, 'load', _initialize);
