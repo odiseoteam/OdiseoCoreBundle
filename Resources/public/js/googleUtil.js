@@ -20,9 +20,23 @@ var GOOGLE_MAP = (function()
         // populate the address fields in the form.
         google.maps.event.addListener(autocomplete, 'place_changed', function()
         {
+         
             _localizarAddress(autocomplete.getPlace());
         });
         map = new google.maps.Map(document.getElementById('map_container'), mapOptions);
+
+
+        $('#odiseo_product_address').focusout(function(e){
+            e.stopPropagation();
+            $('#odiseo_product_address').val("");
+            if (addressMarked != undefined)
+                addressMarked.setMap(null);
+            $('#odiseo_product_town_name').attr('value', "");
+            $('#odiseo_product_town_region_name').attr('value', "");
+            $('#odiseo_product_latitud').attr('value', "" );
+            $('#odiseo_product_longitud').attr('value', "");
+
+        });
     };
 
     var _refreshMap = function()
